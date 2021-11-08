@@ -38,12 +38,14 @@ def decrypt(key, crypted_phrase):
 
     # decrypto in base all'alfabeto decrypter
     decrypted = ""
-    for letter in crypted_phrase:
-        if letter == " ":
+    for char in crypted_phrase:
+        if char == " ":
             decrypted += " "
+        elif char in numbers:
+            decrypted += char
         else:
-            decrypted_letter = alfabeto[decrypter.index(letter.upper())]
-            if letter.islower():
+            decrypted_letter = alfabeto[decrypter.index(char.upper())]
+            if char.islower():
                 decrypted += decrypted_letter.lower()
             else:
                 decrypted += decrypted_letter
@@ -54,7 +56,7 @@ def bruteforce(crypted_phrase):
     splitted = crypted_phrase.split(" ")
     words = []
     for x in splitted:
-        if len(x) > 1:
+        if len(x) > 1 and not x in numbers:
             words.append(x)
     if len(words) == 0:
         print("Inserisci almeno una parola da due lettere")
@@ -98,6 +100,7 @@ def statistics_sorter(el):
     return el.count
                 
 alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['1', '2', '3', '4', '5','6','7','8','9', '0']
 ITALIAN_WORDS = []
 
 #####################
