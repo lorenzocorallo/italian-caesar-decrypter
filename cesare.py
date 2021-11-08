@@ -71,7 +71,7 @@ def bruteforce(crypted_phrase):
             word = words[i]
             for j in range(0, len(alfabeto)):
                 dw = decrypt(j, word)    
-                if dw in ITALIAN_WORDS: # time complexity O(n) n = len(ITALIAN_WORDS)
+                if dw.lower() in ITALIAN_WORDS: # time complexity O(n) n = len(ITALIAN_WORDS)
                     matches.append(j)
         else:
             prev_matches = matches.copy()
@@ -79,7 +79,7 @@ def bruteforce(crypted_phrase):
             word = words[i]
             for j in prev_matches:
                 dw = decrypt(j, word)    
-                if dw in ITALIAN_WORDS: # time complexity O(n) n = len(ITALIAN_WORDS)
+                if dw.lower() in ITALIAN_WORDS: # time complexity O(n) n = len(ITALIAN_WORDS)
                     matches.append(j)
         i += 1
 
